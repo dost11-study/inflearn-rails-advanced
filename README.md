@@ -495,3 +495,13 @@ Rails는 "설정보다 관례"를 중요시하는 철학을 가지고 있음.
 	- 모델: 단수형, 카멜 케이스 (`User`, `BlogPost`)
 	- 테이블: 복수형, 스네이크 케이스 (`users`, `blog_posts`)
 	- 컨트롤러: 복수형, 카멜 케이스
+- 파일 위치 규칙
+	- 모델: `app/models/user.rb`
+	- 컨트롤러: `app/controllers/users_controller.rb`
+	- 뷰: `app/views/users/index.html/erb`
+- 자동 라우팅
+	- `resources :posts` (7개의 RESTful 라우트 자동 생성)
+- 관계 설정
+- 
+  
+`
