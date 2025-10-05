@@ -1,6 +1,8 @@
 # inflearn-rails-advanced
 인프런의 [[심화] 인디해커를 위한 루비온레일즈 8 입문 강의](https://www.inflearn.com/course/%EC%9D%B8%EB%94%94%ED%95%B4%EC%BB%A4-%ED%94%84%EB%A6%AC%EB%9E%9C%EC%84%9C-rubyonrails-%EC%99%84%EB%B2%BD%EC%8B%AC%ED%99%94)를 정리한 내용입니다.
 
+## Ruby 정리
+
 ### Ruby의 핵심 개념
 
 1. 모든 것이 객체 - 정수, 문자열, nil 등 모두 객체
@@ -22,9 +24,9 @@
 
 - boolean의 컨벤션은 is_xxxx, has_xxxx 등이 있다.
 - Heredoc(히어닥) 문법은 3가지가 존재한다.
-  - Squiggly Heredoc(스퀴글리 히어닥) -> 보통 이것만 씀
-  - 일반 Heredoc
-  - 대시 Heredoc
+	- Squiggly Heredoc(스퀴글리 히어닥) -> 보통 이것만 씀
+	- 일반 Heredoc
+	- 대시 Heredoc
 
     ```ruby
     # 들여쓰기 자동 제거
@@ -52,8 +54,6 @@
     TEXT  # 이 종료 구분자만 들여쓰기 가능
     # => "    안녕하세요\n    Ruby입니다\n    들여쓰기가 그대로 유지됩니다\n"
     ```
-
-    
 
 - range 변수는 다음과 같이 사용한다.
 
@@ -124,7 +124,6 @@
   ```
 
 - 조건문에서 추가 조건을 나열할 시 elsif를 사용해야하며, if not과 unless는 같은 syntax이다.
-
 - nil일 경우만 할당하는 방법도 존재한다. (nil 가드)
 
   ```ruby
@@ -293,17 +292,16 @@
   ```
 
 - **Lambda 사용**
-  - 함수형 프로그래밍
-  - 재사용 가능한 로직
-  - Rails scope
-  - 인자 검증 필요할 때 
+	- 함수형 프로그래밍
+	- 재사용 가능한 로직
+	- Rails scope
+	- 인자 검증 필요할 때 
 - **Proc 사용**
-  - 콜백, 이벤트 핸들러
-  - 유연한 인자 처리
+	- 콜백, 이벤트 핸들러
+	- 유연한 인자 처리
 
 - 모듈
-
-  - 메서드와 상수를 그룹화하는 컨테이너 (클래스처럼 보이지만 인스턴스를 만들 수 없음)
+	- 메서드와 상수를 그룹화하는 컨테이너 (클래스처럼 보이지만 인스턴스를 만들 수 없음)
 
     ```ruby
     module Math
@@ -319,8 +317,7 @@
     ```
 
 - 믹스인
-
-  - 모듈을 클래스에 섞어 넣어서 기능 추가
+	- 모듈을 클래스에 섞어 넣어서 기능 추가
 
     ```ruby
     module Greetable
@@ -337,21 +334,19 @@
     ```
 
 - include vs extend vs prepend
-
   - include는 인스턴스 메서드이다. 여러 클래스에서 같은 기능(메서드)를 추가할 때 쓴다.
   - extend는 클래스 메서드
   - prepand는 AOP 혹은 decorator 같은 개념이다. 원래 메서드를 감싸서(wrap) 앞뒤로 뭔가 추가하고 싶을 때 사용한다.
 
 - 왜 모듈을 사용하는가?
-
   - Ruby는 다중 상속이 안되기 때문에, 모듈로 해결한다.
 
 ##  Fat Model
 
 - Fat Model은 비즈니스 로직을 모델에 집중시키는 것이다
-  - 복잡한 쿼리, 데이터 변환, 유효성 검증
-  - 재사용 가능한 메서드 정의
-  - 모델 내부에 스코프와 콜백 활용
+	- 복잡한 쿼리, 데이터 변환, 유효성 검증
+	- 재사용 가능한 메서드 정의
+	- 모델 내부에 스코프와 콜백 활용
 
     ```ruby
     class Post < ApplicationRecord
@@ -518,6 +513,7 @@ validates :email, presence: true # 에러 메시지 자동 생성
 `app/views/layouts/application.html.erb` 자동 적용
 
 ## Rails 폴더 구조
+
 - `app/` 애플리케이션의 핵심 코드
 	- `models/` 데이터 모델 클래스
 	- `views/` 템플릿 파일
@@ -565,8 +561,19 @@ validates :email, presence: true # 에러 메시지 자동 생성
 	- 실제 이메일 전송
 
 ## Rails 환경 전환 방법
+
 - 환경 변수 설정
 	- `RAILS_ENV=production rails server`
 - 명령어에 환경 지정
 	- `rails server -e production`
 	- `rails db:migrate RAILS_ENV=production`
+- 테스트 실행
+	- `rails test` 자동으로 test 환경 사용
+- 환경 확인
+	- `Rails.env.development?` 현재 개발 환경인지 확인
+	- `Rails.env.production?` 현재 운영 환경인지 확인
+
+## 관계 (Relationships)
+
+- 모델 간의 관계를 정의
+- 편리하게 사용할 수 있는 관계 함수들 제공
