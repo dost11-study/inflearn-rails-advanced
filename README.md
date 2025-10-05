@@ -1,4 +1,5 @@
-# [심화] 인디해커를 위한 루비온레일즈 8 완벽 강의
+# inflearn-rails-advanced
+인프런의 [[심화] 인디해커를 위한 루비온레일즈 8 입문 강의](https://www.inflearn.com/course/%EC%9D%B8%EB%94%94%ED%95%B4%EC%BB%A4-%ED%94%84%EB%A6%AC%EB%9E%9C%EC%84%9C-rubyonrails-%EC%99%84%EB%B2%BD%EC%8B%AC%ED%99%94)를 정리한 내용입니다.
 
 ### Ruby의 핵심 개념
 
@@ -20,13 +21,9 @@
   ```
 
 - boolean의 컨벤션은 is_xxxx, has_xxxx 등이 있다.
-
 - Heredoc(히어닥) 문법은 3가지가 존재한다.
-
   - Squiggly Heredoc(스퀴글리 히어닥) -> 보통 이것만 씀
-
   - 일반 Heredoc
-
   - 대시 Heredoc
 
     ```ruby
@@ -349,14 +346,11 @@
 
   - Ruby는 다중 상속이 안되기 때문에, 모듈로 해결한다.
 
-##  Fat Model, Thin Controller
+##  Fat Model
 
 - Fat Model은 비즈니스 로직을 모델에 집중시키는 것이다
-
   - 복잡한 쿼리, 데이터 변환, 유효성 검증
-
   - 재사용 가능한 메서드 정의
-
   - 모델 내부에 스코프와 콜백 활용
 
     ```ruby
@@ -470,4 +464,34 @@
       end
     end
     ```
-   
+
+### Thin Controller
+
+컨트롤러는 간결하게 유지한다
+
+- HTTP 요청/응답 처리에 집중
+- 모델에서 데이터 로드
+- 뷰로 데이터 전달
+- 복잡한 로직은 모델로 위임
+
+컨트롤러의 액션(Action)은 다음과 같다
+
+| 액션        | HTTP 메서드    | URL             | 용도           |
+| :-------- | :---------- | :-------------- | :----------- |
+| `index`   | GET         | `/posts`        | **목록** 보기    |
+| `show`    | GET         | `/posts/1`      | **개별** 상세 보기 |
+| `new`     | GET         | `/posts/new`    | 생성 폼         |
+| `create`  | POST        | `/posts`        | 생성 처리        |
+| `edit`    | GET         | `/posts/1/edit` | 수정 폼         |
+| `update`  | PATCH / PUT | `/posts/1`      | 수정 처리        |
+| `destroy` | DELETE      | `/posts/1`      | 삭제           |
+
+    
+## Convention over Configuration
+Rails는 "설정보다 관례"를 중요시하는 철학을 가지고 있음.
+의례적으로 이렇게 하면 설정을 따로 할 필요가 없다라는 의미를 Rails에서 포함하고 있으며
+관례를 최대한 따라라라고 이야기한다.
+- 명명규칙
+	- 모델: 단수형, 카멜 케이스 (`User`, `BlogPost`)
+	- 테이블: 복수형, 스네이크 케이스 (`users`, `blog_posts`)
+	- 컨트롤러: 복수형, 카멜 케이스
