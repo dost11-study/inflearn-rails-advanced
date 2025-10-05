@@ -544,10 +544,29 @@ validates :email, presence: true # 에러 메시지 자동 생성
 - `Gemfile` 의존성 정의
 - `Rakefile` Rake 작업 정의 (터미널에서 자주 실행할 법한 스크립트들을 Rake 파일에 정의하고 호출)
  
-# Rails 환경
+## Rails 환경
 
 - Development (개발 환경)
 	- 코드 변경 시 자동 리로드
 	- 상세한 에러 메시지와 디버깅 정보
 	- 캐싱 비활성화
 	- 이메일 전송 대신 로컬에서 확인
+- Test (테스트 환경)
+	- 테스트 실행을 위한 최적화
+	- 데이터베이스 트랜잭션으로 테스트 격리(테스트마다 자동 롤백)
+	- 이메일 전송 비활성화
+	- 에셋 컴파일 비활성화
+- Production (운영 환경)
+	- 코드 변경 시 리로드 안됨 (애플리케이션 재부팅 필요)
+	- 성능 최적화
+	- 에러 상세 정보 숨김
+	- 에셋 사전 컴파일
+	- 캐싱 활성화
+	- 실제 이메일 전송
+
+## Rails 환경 전환 방법
+- 환경 변수 설정
+	- `RAILS_ENV=production rails server`
+- 명령어에 환경 지정
+	- `rails server -e production`
+	- `rails db:migrate RAILS_ENV=production`
