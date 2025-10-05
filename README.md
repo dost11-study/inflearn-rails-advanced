@@ -491,6 +491,9 @@
 Rails는 "설정보다 관례"를 중요시하는 철학을 가지고 있음.
 의례적으로 이렇게 하면 설정을 따로 할 필요가 없다라는 의미를 Rails에서 포함하고 있으며
 관례를 최대한 따라라라고 이야기한다.
+
+모든게 커스터마이징 가능한데 그냥 디폴트 설정을 내가 쓸 거면 설정을 추가적으로 할 필요가 없다.
+
 - 명명규칙
 	- 모델: 단수형, 카멜 케이스 (`User`, `BlogPost`)
 	- 테이블: 복수형, 스네이크 케이스 (`users`, `blog_posts`)
@@ -502,6 +505,16 @@ Rails는 "설정보다 관례"를 중요시하는 철학을 가지고 있음.
 - 자동 라우팅
 	- `resources :posts` (7개의 RESTful 라우트 자동 생성)
 - 관계 설정
-- 
-  
-`
+```ruby
+class User < ApplicationRecord
+  has_many :posts # posts 테이블의 user_id 외래키 자동 인식
+end
+```
+- 유효성 검증
+```ruby
+validates :email, presence: true # 에러 메시지 자동 생성
+```
+- 레이아웃
+`app/views/layouts/application.html.erb` 자동 적용
+
+## Rails 폴더 구조 (1)
