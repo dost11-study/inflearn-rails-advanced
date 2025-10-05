@@ -349,10 +349,16 @@ def example_with_error
 		puts " 이 줄은 실행 안 됨" 
   rescue ZeroDivisionError => e 
 	  puts "2. rescue - 에러 잡음: #{e.message}" 
-	else puts "3. else - 실행 안 됨 (에러 발생했으니까)" 
-	ensure puts "4. ensure - 항상 실행" 
-end puts "5. 프로그램 계속 실행\n\n" end
+	else 
+		puts "3. else - 실행 안 됨 (에러 발생했으니까)" 
+	ensure 
+		puts "4. ensure - 항상 실행" 
+	end puts "5. 프로그램 계속 실행\n\n" 
+end
 ```
+
+- 예외발생 시키기
+`raise ArgumentError, "나이는 0 이상이어야 합니다" if age < 0`
 
 ##  Fat Model
 
