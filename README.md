@@ -340,6 +340,19 @@
 
 - 왜 모듈을 사용하는가?
   - Ruby는 다중 상속이 안되기 때문에, 모듈로 해결한다.
+  
+- 예외처리
+```ruby
+def example_with_error 
+	begin 
+		result = 10 / 0 # 에러 발생! 
+		puts " 이 줄은 실행 안 됨" 
+  rescue ZeroDivisionError => e 
+	  puts "2. rescue - 에러 잡음: #{e.message}" 
+	else puts "3. else - 실행 안 됨 (에러 발생했으니까)" 
+	ensure puts "4. ensure - 항상 실행" 
+end puts "5. 프로그램 계속 실행\n\n" end
+```
 
 ##  Fat Model
 
