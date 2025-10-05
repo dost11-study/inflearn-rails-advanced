@@ -518,13 +518,36 @@ validates :email, presence: true # 에러 메시지 자동 생성
 `app/views/layouts/application.html.erb` 자동 적용
 
 ## Rails 폴더 구조
-- app/ 애플리케이션의 핵심 코드
-	- models/ 데이터 모델 클래스
-	- views/ 템플릿 파일
-	- controllers/ 컨트롤러 클래스
-	- helpers/ 뷰 헬퍼 메서드
-	- mailers/ 이메일 관련 클래스
-	- jobs/  백그라운드 작업
-	- assets/ 자바스크립트, CSS, 이미지
-	- channels/ ActionCable 채널
-- config/
+- `app/` 애플리케이션의 핵심 코드
+	- `models/` 데이터 모델 클래스
+	- `views/` 템플릿 파일
+	- `controllers/` 컨트롤러 클래스
+	- `helpers/` 뷰 헬퍼 메서드
+	- `mailers/` 이메일 관련 클래스
+	- `jobs/`  백그라운드 작업
+	- `assets/` 자바스크립트, CSS, 이미지
+	- `channels/` ActionCable 채널 (웹소켓, 스트리밍 등)
+- `config/` 애플리케이션 설정
+	- `routes.rb` 라우팅 정의
+	- `database.yml` 데이터베이스 설정 (저장소 푸시 X)
+	- `environments/` 환경별 설정
+- `db/` 데이터베이스 관련 파일
+	- `migrate/` 마이그레이션 파일
+	- `schema.rb` 데이터베이스 스키마
+	- `seeds.rb` 초기 데이터 설정
+- `lib/` 라이브러리 모듈
+- `log/` 로그 파일
+- `public/` 정적 파일 (404.html, robots.txt 등)
+- `test/`, `spec/` 테스트 코드
+- `tmp/` 임시 파일
+- `vendor/` 서드파티 코드 (부트스트랩과 같은 외부 CSS/JS 파일, Gem 직접 수정 후 사용 시)
+- `Gemfile` 의존성 정의
+- `Rakefile` Rake 작업 정의 (터미널에서 자주 실행할 법한 스크립트들을 Rake 파일에 정의하고 호출)
+ 
+# Rails 환경
+
+- Development (개발 환경)
+	- 코드 변경 시 자동 리로드
+	- 상세한 에러 메시지와 디버깅 정보
+	- 캐싱 비활성화
+	- 이메일 전송 대신 로컬에서 확인
