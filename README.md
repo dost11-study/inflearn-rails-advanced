@@ -517,4 +517,14 @@ validates :email, presence: true # 에러 메시지 자동 생성
 - 레이아웃
 `app/views/layouts/application.html.erb` 자동 적용
 
-## Rails 폴더 구조 (1)
+## Rails 폴더 구조
+- app/ 애플리케이션의 핵심 코드
+	- models/ 데이터 모델 클래스
+	- views/ 템플릿 파일
+	- controllers/ 컨트롤러 클래스
+	- helpers/ 뷰 헬퍼 메서드
+	- mailers/ 이메일 관련 클래스
+	- jobs/  백그라운드 작업
+	- assets/ 자바스크립트, CSS, 이미지
+	- channels/ ActionCable 채널
+- config/
