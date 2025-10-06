@@ -592,7 +592,18 @@ validates :email, presence: true # 에러 메시지 자동 생성
 	- `Rails.env.development?` 현재 개발 환경인지 확인
 	- `Rails.env.production?` 현재 운영 환경인지 확인
 
+## Migration
+
+- `db:migrate:status` 마이그레이션 상태가 나옴 up: 반영됨, down: 반영안됨
+- `db:rollback` 마이그레이션 반영 취소 (한개씩 revert)
+- `db:rollback STEP=2` 2단계 롤백
+
 ## 관계 (Relationships)
 
 - 모델 간의 관계를 정의
 - 편리하게 사용할 수 있는 관계 함수들 제공
+
+1:N 관계에서 1쪽의 모델에다 `has_many` 를 통해 N과의 연관관계 정의가 필요하다.
+이때 옵션으로는 `dependent: :destroy` 는 1을 삭제 시 N도 삭제시킨다.
+삭제 시 null로 채워두고 싶다면 `nullify`
+
