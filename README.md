@@ -605,5 +605,7 @@ validates :email, presence: true # 에러 메시지 자동 생성
 
 1:N 관계에서 1쪽의 모델에다 `has_many` 를 통해 N과의 연관관계 정의가 필요하다.
 이때 옵션으로는 `dependent: :destroy` 는 1을 삭제 시 N도 삭제시킨다.
-삭제 시 null로 채워두고 싶다면 `nullify`
+삭제 시 null로 채워두고 싶다면 `:nullify`를 사용하면 된다.
+
+N 관계에서는 FK를 가지고 있으니 `belongs_to` 추가가 필요하다.
 
