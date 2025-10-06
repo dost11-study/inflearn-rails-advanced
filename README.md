@@ -609,3 +609,15 @@ validates :email, presence: true # 에러 메시지 자동 생성
 
 N 관계에서는 FK를 가지고 있으니 `belongs_to` 추가가 필요하다.
 
+실제 데이터를 생성할 때는 `comment = post.comments.create(body: "내용", user_id: 1)` 대신 
+`comment = post.comments.create(body: "내용", user: user)` 처럼 레퍼런스를 바로 사용해도 된다. 
+
+그리고 `post.comments.create(body: "내용")` 처럼 id를 지정하지 않으면, 메모리상에서만 존재하고 실제 데이터베이스에 `INSERT` 되지 않는다. (메모리상의 데이터를 실제 데이터베이스에 넣어주기 위해선 레퍼런스를 연결해주고 `save` 함수까지 호출해줘야한다.)
+
+## 스코드 (Scope)
+
+- 스코프는 자주 사용되는 쿼리 조건을 재사용 가능한 메서드로 캡슐화
+- 모델 클래스와 모델의 컬렉션에서 호출 가능
+- 항상 ActiveRecord::Relation 객체를 반환하여 체이닝 가능
+- 모델 코드를 더 읽기 쉽고 유지보수하기 쉽게 만들어줌
+- 비즈니스 로직을 모델 레벨에서 추상화하여 컨트롤러를 간결하게 유지
